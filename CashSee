@@ -6,7 +6,7 @@ local UICorner_2 = Instance.new("UICorner")
 local MadeBy = Instance.new("TextLabel")
 local UICorner_3 = Instance.new("UICorner")
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Parent = game.CoreGui
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
@@ -43,7 +43,7 @@ UICorner_3.Parent = MadeBy
 
 local function makeComma(amount)
     local formatted = amount
-    while true do  
+    while true do
         formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
         if (k == 0) then
             break
