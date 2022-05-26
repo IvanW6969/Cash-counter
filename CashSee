@@ -21,25 +21,25 @@ TextLabel.Font = Enum.Font.SourceSans
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 
-UICorner_2.Parent = TextLabel
+UICorner2.Parent = TextLabel
 
 local function CashCheck()
-	local script = Instance.new('LocalScript', TextLabel)
-
-	local TheTotalServerCash = 0
-	
-	for _, v in pairs(game:GetService('Workspace'):FindFirstChild('Ignored'):FindFirstChild('Drop'):GetChildren()) do
-		if v.Name == 'MoneyDrop' then
-			local function CalculateShits(s)
-				local data = string.match(s, '%d[%d.,]*')
-				local numdata = string.gsub(data, ",", "")
-				return tonumber(numdata)
-			end
-			local cal = CalculateShits(v.BillboardGui.TextLabel.Text)
-			TheTotalServerCash = TheTotalServerCash + tonumber(cal)
-		end
-	end
-	
-	print(TheTotalServerCash)
+    local script = Instance.new('LocalScript', TextLabel)
+    while true do
+        local TheTotalServerCash = 0
+        for , v in pairs(game:GetService('Workspace'):FindFirstChild('Ignored'):FindFirstChild('Drop'):GetChildren()) do
+            if v.Name == 'MoneyDrop' then
+                local function CalculateShits(s)
+                    local data = string.match(s, '%d[%d.,]*')
+                    local numdata = string.gsub(data, ",", "")
+                    return tonumber(numdata)
+                end
+                local cal = CalculateShits(v.BillboardGui.TextLabel.Text)
+                TheTotalServerCash = TheTotalServerCash + tonumber(cal)
+            end
+        end
+        script.Parent.Text = TheTotalServerCash
+        wait(5)
+    end)
 end
 coroutine.wrap(CashCheck)()
